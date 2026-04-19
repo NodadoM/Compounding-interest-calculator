@@ -1,13 +1,13 @@
 interest = input("Do you want to compute compounding interest rates? (y/n): ").lower()
 
 def compound_interest():
-    principle = 0
+    principal = 0
     rate = 0
     time = 0
     while True:
-        principle = float(input("Enter the principle: "))
-        if principle < 0:
-            print("principle can't be less than zero")
+        principal = float(input("Enter the principal: "))
+        if principal < 0:
+            print("principal can't be less than zero")
         else:
             break
 
@@ -23,7 +23,7 @@ def compound_interest():
             print("Time can't be less than zero")
         else:
             break
-    total = principle * pow((1 + rate / 100), time)
+    total = principal * pow((1 + rate / 100), time)
     print(f"your compounded interest after {time} year/s: ${total:.2f}")
 if interest == "y":
     compound_interest()

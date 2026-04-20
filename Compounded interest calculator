@@ -1,37 +1,48 @@
+interest = input("Do you want to compute compounding interest rates? (y/n): ").lower()
+
 def compound_interest():
+    principal = 0
+    rate = 0
+    time = 0
     while True:
-        principal = float(input("Enter the principal: "))
-        if principal < 0:
-            print("Principal can't be less than zero")
-        else:
-            break
+        try:
+            principal = float(input("Enter the principal: "))
+            if principal < 0:
+                print("principal can't be less than zero")
+            else:
+                break
+        except ValueError:
+            print("Principal must be numerical")
 
     while True:
-        rate = float(input("Enter the interest rate: "))
-        if rate < 0:
-            print("Interest rate can't be less than zero")
-        else:
-            break
-
+        try:
+            rate = float(input("Enter the interest rate: "))
+            if rate <0:
+                print("Interest rate can't be less than zero")
+            else:
+                break
+        except ValueError:
+            print("Interest rate must be numerical")
     while True:
-        time = float(input("Enter the time in years: "))
-        if time < 0:
-            print("Time can't be less than zero")
-        else:
-            break
-
+        try:
+            time = float(input("Enter the time in years: "))
+            if time <0:
+                print("Time can't be less than zero")
+            else:
+                break
+        except ValueError:
+            print("Time must be numerical")
     total = principal * pow((1 + rate / 100), time)
-    print(f"Your compounded amount after {time} year/s: ${total:.2f}")
+    print(f"your compounded interest after {time} year/s: ${total:.2f}")
+    return rerun()
 
-
-# MAIN LOOP
-while True:
-    start = input("Do you want to compute compound interest? (y/n): ").lower()
-
-    if start == "y":
+def rerun():
+    again = input("would you like to compute more? (y/n): ")
+    if again == "y":
         compound_interest()
-    elif start == "n":
-        print("Program ended.")
-        break
+    elif again == "n":
+        exit()
     else:
-        print("Please enter y or n only.")
+        print("Please input 'y' or 'n': ")
+while True:
+    compound_interest()
